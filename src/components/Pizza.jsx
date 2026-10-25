@@ -12,7 +12,6 @@ const Pizza = () => {
         };
         mostrarPizzas();
     }, []);
-echo "# pizzeria" >> README.md
     return (
         <div className="d-flex flex-wrap justify-content-center gap-4 mt-4"> 
             {pizzas.map((pizza) => (
