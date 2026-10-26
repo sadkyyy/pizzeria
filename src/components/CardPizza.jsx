@@ -19,7 +19,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
      <p className="card-price fw-bold fs-5 ">Precio: ${price}</p>
 
      <div className="d-flex justify-content-between mt-3">
-     <button type="button" class="btn-outline theme-inverse">Ver mas + </button>
+     <button type="button" className="btn-outline theme-inverse">Ver mas + </button>
     <a href="#" className="btn-solid theme-inverse">añadir</a>
     </div>
   </div>

@@ -1,30 +1,28 @@
-import Footer from './components/Footer.jsx'
-import Navbar from './components/Navbarr.jsx'
-import Home from './components/Home.jsx'
-import Register from './components/Register.jsx'
-import Login from './components/Login.jsx'
-import Cart from './components/Cart.jsx'
-import Pizza from './components/Pizza.jsx'
 
+import Home from './components/pages/Home.jsx';
+import Register from './components/pages/Register.jsx';
+import Login from './components/pages/Login.jsx';
+import Pizza from './components/pages/Pizza.jsx';
+import Profile from './components/pages/Profile.jsx';
+import NotFound from './components/pages/NotFound.jsx';
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbarr.jsx';
 
-function App() {
-
+const App = () => {
   return (
     <>
-          
-        
-         
-         <Navbar />
-         <Home />
-         {/* <Register />
-           <Login /> */}
-         <Pizza />
-          <Footer />
-        <Cart />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/pizza/p001" element={<Pizza />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/404" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+};
 
-          </>
-  ) 
-  
-}
 
-export default App
+export default App;
