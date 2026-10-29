@@ -1,10 +1,15 @@
-
+import {CarritoContext} from "../context/CarritoContext"
+import {useContext} from "react"
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const total = 25000;
   const token = false;
+  const { carrito } = useContext(CarritoContext);
+  const total = carrito.reduce(
+    (suma, pizza) => suma + pizza.price,
+    0 );
 
+     
   return (
     <nav className="nav w-100" style={{ backgroundColor: 'black' }}>
       <a className="nav-link disabled" aria-disabled="true">
