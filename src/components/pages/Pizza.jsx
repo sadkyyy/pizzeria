@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
+const { id } = useParams(); 
+
+const pizzaEncontrada = pizzas.find(
+  (pizza) => pizza.id === id
+);
 const Pizza = () => {
     const [pizzas, setPizzas] = useState([]);
      
@@ -14,6 +20,7 @@ const Pizza = () => {
     }, []);
     return (
         <div className="d-flex flex-wrap justify-content-center gap-4 mt-4"> 
+
             {pizzas.map((pizza) => (
                
                 <section key={pizza.id} className="card" style={{ maxWidth: '320px' }}>

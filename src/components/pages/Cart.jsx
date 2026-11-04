@@ -1,9 +1,12 @@
 
 import { useContext } from "react";
 import { CarritoContext } from "../../context/CarritoContext.jsx";
+import {UserContext} from "../../context/UserContext.jsx"
 
 const Cart = () => {
   const { carrito, setCarrito } = useContext(CarritoContext);
+
+  const {token, setToken} = useContext (UserContext)
 
   const sumar = (id) => {
     const nuevaPizza = carrito.map((item) => {
@@ -103,12 +106,17 @@ const Cart = () => {
               </div>
 
               <div className="text-end mt-4">
+ {/* si el token es true entonces mostramos el boton si es falso lo inhabilitamos*/}
+                { token ? 
                 <button
                   className="btn btn-success btn-lg px-5"
                   type="button"
                 >
                   Pagar
                 </button>
+                : undefined
+
+                } 
               </div>
             </div>
           </div>

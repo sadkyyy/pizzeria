@@ -1,13 +1,16 @@
 import {CarritoContext} from "../context/CarritoContext"
 import {useContext} from "react"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const token = false;
   const { carrito } = useContext(CarritoContext);
   const total = carrito.reduce(
     (suma, pizza) => suma + pizza.price,
     0 );
+    const {token, setToken} = useContext (UserContext)
+    const {logout} = useContext (UserContext)
 
      
   return (
@@ -45,7 +48,8 @@ const Navbar = () => {
       {token ? (
         <>
           <Link className="nav-link" to="/profile">🔓 Profile</Link>
-          <Link className="nav-link" to="/">🔒 Logout</Link>
+          <Link className="nav-link" onclick={logout} to="/">🔒 Logout</Link>
+        
         </>
       ) : (
         <>

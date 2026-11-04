@@ -10,25 +10,45 @@ import Navbar from './components/Navbarr.jsx';
 import Footer from './components/Footer.jsx';
 import CarritoContextProvider  from './context/CarritoContext.jsx';
 import Cart from './components/pages/Cart.jsx'
+import { UserProvider } from "./context/UserContext";
+import { useContext } from 'react';
+import { Navigate } from "react-router-dom";
 
+
+const {token} = useContext(UserContext)
 const App = () => {
   return (
-    <CarritoContextProvider>
+  <CarritoContextProvider>
+    <UserProvider>
       <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/register"
+          element={token ? <Navigate to="/" /> : <Register />}
+        />
+
+        <Route
+          path="/login"
+          element={token ? <Navigate to="/" /> : <Login />}
+        />
+
         <Route path="/pizza/p001" element={<Pizza />} />
-        <Route path="/profile" element={<Profile />} />
+
+        <Route
+          path="/profile"
+          element={token ? <Profile /> : <Navigate to="/login" />}
+        />
+
         <Route path="/404" element={<NotFound />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
 
       <Footer />
-    </CarritoContextProvider>
-  );
-};
+    </UserProvider>
+  </CarritoContextProvider>
+);
+}; 
 
-export default App;
